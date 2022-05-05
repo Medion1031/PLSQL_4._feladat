@@ -24,9 +24,9 @@ A táblák között legyenek tartalmi kapcsolatok:
 
 ### Tranzakciok tabla (Transactions)
 
-| id | product_id | seller_id |
-|----|------|--------|
-|int|int|int|
+| id | product_id | seller_id | amount |
+|----|------|--------|---------------|
+|int|int|int|int|
 
 ### Beszallitok tabla (Dealers)
 
