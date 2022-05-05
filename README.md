@@ -18,7 +18,7 @@ A táblák között legyenek tartalmi kapcsolatok:
 
 ### Termekek tabla (Products)
 
-| id | name | dealer |
+| id | name | dealer_id |
 |----|------|--------|
 |int|String|int|
 
