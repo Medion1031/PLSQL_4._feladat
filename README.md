@@ -45,7 +45,7 @@ A táblák között legyenek tartalmi kapcsolatok:
 - [x] Elado tabla letrehozasa
 - [x] Beszallitok tabla letrehozasa
 - [x] Termekek tabla letrehozasa
-- [ ] Tranzakciok tabla letrehozasa
+- [x] Tranzakciok tabla letrehozasa
 - [ ] (1. feladat) PL/SQL hany darabot vasaroltak
 - [ ] (1. feladat) PL/SQL hibalekezeles
 - [ ] (2. feladat) PL/SQL mentsd collection-ba a 3 legkevesebbet eladott termeket

@@ -15,3 +15,9 @@ create table Products(
     name varchar(20),
     dealer_id int
 );
+
+create table Transactions(
+    id int primary key,
+    product_id int,
+    seller_id int
+);
