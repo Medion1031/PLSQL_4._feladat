@@ -43,7 +43,7 @@ A táblák között legyenek tartalmi kapcsolatok:
 ## Tasks
 
 - [x] Elado tabla letrehozasa
-- [ ] Beszallitok tabla letrehozasa
+- [x] Beszallitok tabla letrehozasa
 - [ ] Termekek tabla letrehozasa
 - [ ] Tranzakciok tabla letrehozasa
 - [ ] (1. feladat) PL/SQL hany darabot vasaroltak
