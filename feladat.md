@@ -42,7 +42,7 @@ A táblák között legyenek tartalmi kapcsolatok:
 
 ## Tasks
 
-- [ ] Elado tabla letrehozasa
+- [x] Elado tabla letrehozasa
 - [ ] Beszallitok tabla letrehozasa
 - [ ] Termekek tabla letrehozasa
 - [ ] Tranzakciok tabla letrehozasa
