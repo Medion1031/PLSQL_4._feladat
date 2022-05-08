@@ -1,9 +1,11 @@
--- Tablak letrehozasa
+select vdani.get_bead('PBCD7O') from dual;
 
 create table Sellers(
     id int primary key,
     name VARCHAR(20)
 );
+
+
 
 create table Dealers(
     id int primary key,
@@ -13,50 +15,31 @@ create table Dealers(
 create table Products(
     id int primary key,
     name varchar(20),
-    dealer_id int
+    dealer_id int,
+    price int
 );
 
 create table Transactions(
     id int primary key,
     product_id int,
-    seller_id int
+    seller_id int,
+    amount int
 );
 
--- Tablak feltoltese
+select * from Transactions;
+select * from Products;
+select * from Dealers;
+select * from Sellers;
+
+drop table Dealers;
+drop table Sellers;
+drop table Transactions;
+drop table Products;
+
+
 
 insert all
-    -- Dealers
-    into Dealers(id, name) values (1, 'Dealer_A')
-    into Dealers(id, name) values (2, 'Dealer_B')
-    into Dealers(id, name) values (3, 'Dealer_C')
-    into Dealers(id, name) values (4, 'Dealer_D')
-
-    -- Sellers
-    into Sellers(id, name) values (1, 'Seller_A')
-    into Sellers(id, name) values (2, 'Seller_B')
-    into Sellers(id, name) values (3, 'Seller_C')
-    into Sellers(id, name) values (4, 'Seller_D')
-
-    -- Products
-    into Products(id, name, dealer_id) values (1, 'Product_A', 1)
-    into Products(id, name, dealer_id) values (2, 'Product_B', 1)
-    into Products(id, name, dealer_id) values (3, 'Product_C', 1)
-    into Products(id, name, dealer_id) values (4, 'Product_D', 1)
-    into Products(id, name, dealer_id) values (5, 'Product_E', 2)
-    into Products(id, name, dealer_id) values (6, 'Product_F', 2)
-    into Products(id, name, dealer_id) values (7, 'Product_G', 2)
-    into Products(id, name, dealer_id) values (8, 'Product_H', 2)
-    into Products(id, name, dealer_id) values (9, 'Product_E', 3)
-    into Products(id, name, dealer_id) values (10, 'Product_I', 3)
-    into Products(id, name, dealer_id) values (11, 'Product_J', 3)
-    into Products(id, name, dealer_id) values (12, 'Product_K', 3)
-    into Products(id, name, dealer_id) values (13, 'Product_L', 4)
-    into Products(id, name, dealer_id) values (14, 'Product_M', 4)
-    into Products(id, name, dealer_id) values (15, 'Product_N', 4)
-    into Products(id, name, dealer_id) values (16, 'Product_O', 4)
-
-    -- Transactions
-    into Transactions(id, product_id, seller_id, amount) values (1, 1, 1, 12)
+     into Transactions(id, product_id, seller_id, amount) values (1, 1, 1, 12)
     into Transactions(id, product_id, seller_id, amount) values (2, 2, 1, 2)
     into Transactions(id, product_id, seller_id, amount) values (3, 3, 1, 34)
     into Transactions(id, product_id, seller_id, amount) values (4, 4, 1, 2)
@@ -96,3 +79,31 @@ insert all
     into Transactions(id, product_id, seller_id, amount) values (38, 15, 4, 15)
     into Transactions(id, product_id, seller_id, amount) values (39, 16, 4, 6)
 select * from dual;
+
+set serveroutput on;
+
+create or replace function countSold(idetifier in int)
+return int as 
+    specificAmount int := 0;
+
+begin
+    select SUM(amount) 
+    into specificAmount
+    from Transactions
+    where product_id = idetifier
+    group by product_id;
+
+    
+    if specificamount = 0 then 
+        raise NO_DATA_FOUND;
+    end if;
+    return specificAmount;
+    
+exception 
+        when NO_DATA_FOUND then 
+            raise_application_error(-20210, 'Invalid identifier');
+            return null;
+end;
+/
+
+select countSold(56) from dual;

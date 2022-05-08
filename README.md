@@ -46,8 +46,8 @@ A táblák között legyenek tartalmi kapcsolatok:
 - [x] Beszallitok tabla letrehozasa
 - [x] Termekek tabla letrehozasa
 - [x] Tranzakciok tabla letrehozasa
-- [ ] (1. feladat) PL/SQL hany darabot vasaroltak
-- [ ] (1. feladat) PL/SQL hibalekezeles
+- [x] (1. feladat) PL/SQL hany darabot vasaroltak
+- [x] (1. feladat) PL/SQL hibalekezeles
 - [ ] (2. feladat) PL/SQL mentsd collection-ba a 3 legkevesebbet eladott termeket
 - [ ] (2. fealdat) PL/SQL csokkentsd ezen termekek arat parameterul kapott szazalekkal
 - [ ] (3. feladat) PL/SQL Trikker az arvaltozasra 
