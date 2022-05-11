@@ -39,7 +39,38 @@ drop table Products;
 
 
 insert all
-     into Transactions(id, product_id, seller_id, amount) values (1, 1, 1, 12)
+     -- Dealers
+    into Dealers(id, name) values (1, 'Dealer_A')
+    into Dealers(id, name) values (2, 'Dealer_B')
+    into Dealers(id, name) values (3, 'Dealer_C')
+    into Dealers(id, name) values (4, 'Dealer_D')
+
+    -- Sellers
+    into Sellers(id, name) values (1, 'Seller_A')
+    into Sellers(id, name) values (2, 'Seller_B')
+    into Sellers(id, name) values (3, 'Seller_C')
+    into Sellers(id, name) values (4, 'Seller_D')
+
+    -- Products
+    into Products(id, name, dealer_id, price) values (1, 'Product_A', 1, 500)
+    into Products(id, name, dealer_id, price) values (2, 'Product_B', 1, 500)
+    into Products(id, name, dealer_id, price) values (3, 'Product_C', 1, 500)
+    into Products(id, name, dealer_id, price) values (4, 'Product_D', 1, 500)
+    into Products(id, name, dealer_id, price) values (5, 'Product_E', 2, 500)
+    into Products(id, name, dealer_id, price) values (6, 'Product_F', 2, 500)
+    into Products(id, name, dealer_id, price) values (7, 'Product_G', 2, 500)
+    into Products(id, name, dealer_id, price) values (8, 'Product_H', 2, 500)
+    into Products(id, name, dealer_id, price) values (9, 'Product_E', 3, 500)
+    into Products(id, name, dealer_id, price) values (10, 'Product_I', 3, 500)
+    into Products(id, name, dealer_id, price) values (11, 'Product_J', 3, 500)
+    into Products(id, name, dealer_id, price) values (12, 'Product_K', 3, 500)
+    into Products(id, name, dealer_id, price) values (13, 'Product_L', 4, 500)
+    into Products(id, name, dealer_id, price) values (14, 'Product_M', 4, 500)
+    into Products(id, name, dealer_id, price) values (15, 'Product_N', 4, 500)
+    into Products(id, name, dealer_id, price) values (16, 'Product_O', 4, 500)
+
+    -- Transactions
+    into Transactions(id, product_id, seller_id, amount) values (1, 1, 1, 12)
     into Transactions(id, product_id, seller_id, amount) values (2, 2, 1, 2)
     into Transactions(id, product_id, seller_id, amount) values (3, 3, 1, 34)
     into Transactions(id, product_id, seller_id, amount) values (4, 4, 1, 2)
