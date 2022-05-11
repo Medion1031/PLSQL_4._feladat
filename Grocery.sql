@@ -97,6 +97,8 @@ begin
     if specificamount = 0 then 
         raise NO_DATA_FOUND;
     end if;
+
+    
     return specificAmount;
     
 exception 
@@ -107,3 +109,86 @@ end;
 /
 
 select countSold(56) from dual;
+
+
+create or replace procedure getDiscount(percent in int)
+is 
+    firstName Products.name%type;
+    secondName Products.name%type;
+    thirdName Products.name%type;
+begin 
+    update Products 
+    set price = price / 100 * (100-percent)
+    where id in (select id 
+        from Products 
+        inner join (
+            select *
+            from (
+                select product_id, sum(amount)
+                from Transactions 
+                group by product_id
+                order by sum(amount) asc
+            ) 
+            where ROWNUM <= 3
+        )
+        on id = product_id);
+        
+       select name 
+       into firstName
+        from Products 
+        inner join (
+            select *
+            from (
+                select product_id, sum(amount)
+                from Transactions 
+                group by product_id
+                order by sum(amount) asc
+                FETCH NEXT 1 ROWS ONLY
+            ) 
+        )
+        on id = product_id; 
+        
+        select name 
+       into secondName
+        from Products 
+        inner join (
+            select *
+            from (
+                select product_id, sum(amount)
+                from Transactions 
+                group by product_id
+                order by sum(amount) asc
+                OFFSET 1 ROWS 
+                FETCH NEXT 1 ROWS ONLY
+            ) 
+        )
+        on id = product_id; 
+        
+        select name 
+       into thirdName
+        from Products 
+        inner join (
+            select *
+            from (
+                select product_id, sum(amount)
+                from Transactions 
+                group by product_id
+                order by sum(amount) asc
+                OFFSET 2 ROWS 
+                FETCH NEXT 1 ROWS ONLY
+            ) 
+        )
+        on id = product_id; 
+        DBMS_OUTPUT.PUT_LINE(firstName || ':' || secondName || ':' || thirdName );
+end;
+/
+
+
+create or replace trigger updateTrigger
+after update
+on Products
+for each row
+begin 
+    DBMS_OUTPUT.PUT_LINE('new price: ' || :new.price || ' Old price: ' || :old.price);
+end;
+/
