@@ -50,4 +50,4 @@ A táblák között legyenek tartalmi kapcsolatok:
 - [x] (1. feladat) PL/SQL hibalekezeles
 - [x] (2. feladat) PL/SQL mentsd collection-ba a 3 legkevesebbet eladott termeket
 - [x] (2. fealdat) PL/SQL csokkentsd ezen termekek arat parameterul kapott szazalekkal
-- [ ] (3. feladat) PL/SQL Trigger az arvaltozasra 
+- [x] (3. feladat) PL/SQL Trigger az arvaltozasra 
